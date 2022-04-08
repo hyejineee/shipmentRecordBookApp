@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/shipmentListScreen">
+
+    <fragment
+        android:id="@+id/shipmentListScreen"
+        android:name="com.hyejineee.shipmentrecordbook.presentation.shipment_list.ShipmentListScreen"
+        android:label="fragment_shipment_list_screen"
+        tools:layout="@layout/fragment_shipments" >
+        <action
+            android:id="@+id/action_shipmentListScreen_to_addShipmentScreen"
+            app:destination="@id/addShipmentScreen" />
+        <action
+            android:id="@+id/action_shipmentListScreen_to_shipmentDetailDialog"
+            app:destination="@id/shipmentDetailDialog" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/statementOfShipmentScreen"
+        android:name="com.hyejineee.shipmentrecordbook.presentation.statement_list.StatementOfShipmentScreen"
+        android:label="fragment_statement_of_shipment"
+        tools:layout="@layout/fragment_statement_of_shipment" />
+
+    <dialog
+        android:id="@+id/addShipmentScreen"
+        android:name="com.hyejineee.shipmentrecordbook.AddShipmentScreen"
+        android:label="fragment_add_shipment_screen"
+        tools:layout="@layout/fragment_add_shipment_screen" />
+
+    <fragment
+        android:id="@+id/shipmentDetailDialog"
+        android:name="com.hyejineee.shipmentrecordbook.ShipmentDetailDialog"
+        android:label="fragment_shipment_detail_dialog"
+        tools:layout="@layout/fragment_shipment_detail_dialog" />
+</navigation>
