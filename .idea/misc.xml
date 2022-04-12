@@ -4,14 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_add_product.xml" value="0.29140625" />
+        <entry key="app/src/main/res/layout/activity_settlement_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_add_product.xml" value="0.12" />
         <entry key="app/src/main/res/layout/fragment_add_shipment_screen.xml" value="0.17921146953405018" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/fragment_settlements_screen.xml" value="0.29140625" />
         <entry key="app/src/main/res/layout/fragment_shipment_list_screen.xml" value="0.19569672131147542" />
         <entry key="app/src/main/res/layout/fragment_shipments.xml" value="0.19569672131147542" />
         <entry key="app/src/main/res/layout/fragment_statement_of_shipment.xml" value="0.19569672131147542" />
         <entry key="app/src/main/res/layout/item_product_lise.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_tagon_list.xml" value="0.29140625" />
+        <entry key="app/src/main/res/layout/layout_barcode_scanner.xml" value="0.10859375" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.29140625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>

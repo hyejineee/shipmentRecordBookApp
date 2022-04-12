@@ -23,7 +23,7 @@
             android:padding="8dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/horizontalCenterGuide"
+                android:id="@+id/guideH04"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:orientation="vertical"
@@ -36,14 +36,14 @@
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@+id/horizontalCenterGuide"
+                app:layout_constraintRight_toRightOf="@+id/guideH04"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <ImageView
+                    android:id="@+id/barcodeImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:layout_height="match_parent"/>
             </androidx.cardview.widget.CardView>
 
 
@@ -52,7 +52,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:orientation="vertical"
-                app:layout_constraintLeft_toLeftOf="@+id/horizontalCenterGuide"
+                app:layout_constraintLeft_toLeftOf="@+id/guideH04"
                 app:layout_constraintRight_toLeftOf="@+id/checkImageview"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -99,7 +99,7 @@
                 android:id="@+id/checkImageview"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@{shipmentInfo.isCalculate ? @drawable/ic_fill_check : @drawable/ic_line_check}"
+                android:src="@{shipmentInfo.settled ? @drawable/ic_fill_check : @drawable/ic_line_check}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

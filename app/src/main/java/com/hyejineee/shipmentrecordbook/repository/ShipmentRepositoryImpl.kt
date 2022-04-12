@@ -3,7 +3,7 @@ package com.hyejineee.shipmentrecordbook.repository
 import com.hyejineee.shipmentrecordbook.data.ShipmentInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.time.LocalDate
+import java.util.*
 
 class ShipmentRepositoryImpl : ShipmentRepository {
 
@@ -12,9 +12,9 @@ class ShipmentRepositoryImpl : ShipmentRepository {
             id = it.toLong(),
             code = "MLOW$it",
             receiver = "receiver$it",
-            date = LocalDate.now(),
+            date = Date(System.currentTimeMillis()),
             price = "299",
-            isCalculate = false
+            isSettled = false
         )
     }.toMutableList()
 

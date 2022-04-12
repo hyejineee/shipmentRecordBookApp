@@ -8,5 +8,5 @@ data class ShipmentInfoUiModel(
     val receiver: String,
     val date: String,
     val price: String,
-    val isCalculate: Boolean,
+    val isSettled: Boolean,
 )

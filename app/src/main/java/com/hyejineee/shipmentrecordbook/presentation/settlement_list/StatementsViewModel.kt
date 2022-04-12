@@ -1,4 +1,4 @@
-package com.hyejineee.shipmentrecordbook.presentation.statement_list
+package com.hyejineee.shipmentrecordbook.presentation.settlement_list
 
 import androidx.lifecycle.ViewModel
 

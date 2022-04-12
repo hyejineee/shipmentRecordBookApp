@@ -1,20 +1,18 @@
-package com.hyejineee.shipmentrecordbook
+package com.hyejineee.shipmentrecordbook.presentation.shipment_list
 
 import android.content.res.Resources
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.zxing.BarcodeFormat
-import com.google.zxing.integration.android.IntentIntegrator
+import com.hyejineee.shipmentrecordbook.R
 import com.hyejineee.shipmentrecordbook.base.BaseBottomSheetFragment
 import com.hyejineee.shipmentrecordbook.data.ShipmentInfo
 import com.hyejineee.shipmentrecordbook.databinding.FragmentAddShipmentScreenBinding
-import com.hyejineee.shipmentrecordbook.presentation.shipment_list.ShipmentsViewModel
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 import org.koin.androidx.navigation.koinNavGraphViewModel
-import java.time.LocalDate
 import java.util.*
 
 
@@ -24,8 +22,8 @@ class AddShipmentScreen :
     override val layoutId: Int = R.layout.fragment_add_shipment_screen
 
     private val barcodeLauncher = registerForActivityResult(ScanContract()) { result ->
-        if(result.contents == null){
-            Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT).show()
+        if (result.contents == null) {
+            Toast.makeText(context, "취소되었습니다.", Toast.LENGTH_SHORT).show()
             return@registerForActivityResult
         }
 
@@ -45,13 +43,12 @@ class AddShipmentScreen :
         }
         binding.closeButton.setOnClickListener { findNavController().popBackStack() }
 
-        //바코드 리더 연결
         barcodeLauncher.launch(ScanOptions())
 
+        binding.barcodeImageView.setOnClickListener { barcodeLauncher.launch(ScanOptions()) }
     }
 
     override fun subscribeUiModel() {}
-
     override fun fetchData() {}
 
     override fun setHeight() {
@@ -73,7 +70,6 @@ class AddShipmentScreen :
 
         viewModel.saveShipment(shipment)
     }
-
 
 
 }

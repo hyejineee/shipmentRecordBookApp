@@ -21,7 +21,7 @@ class ShipmentsViewModelTest : ViewModelTest() {
             receiver = "receiver$it",
             date = LocalDate.now(),
             price = "299",
-            isCalculate = false
+            isSettled = false
         )
     }
 
