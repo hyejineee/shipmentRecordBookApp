@@ -9,13 +9,11 @@
         android:id="@+id/shipmentListScreen"
         android:name="com.hyejineee.shipmentrecordbook.presentation.shipment_list.ShipmentListScreen"
         android:label="fragment_shipment_list_screen"
-        tools:layout="@layout/fragment_shipments_screen" >
+        tools:layout="@layout/fragment_shipments_screen">
         <action
             android:id="@+id/action_shipmentListScreen_to_addShipmentScreen"
             app:destination="@id/addShipmentScreen" />
-        <action
-            android:id="@+id/action_shipmentListScreen_to_shipmentDetailDialog"
-            app:destination="@id/shipmentDetailDialog" />
+
     </fragment>
 
     <fragment
@@ -26,13 +24,8 @@
 
     <dialog
         android:id="@+id/addShipmentScreen"
-        android:name="com.hyejineee.shipmentrecordbook.presentation.shipment_list.AddShipmentScreen"
+        android:name="com.hyejineee.shipmentrecordbook.presentation.shipment_list.AddShipmentDialog"
         android:label="fragment_add_shipment_screen"
         tools:layout="@layout/fragment_add_shipment_screen" />
 
-    <fragment
-        android:id="@+id/shipmentDetailDialog"
-        android:name="com.hyejineee.shipmentrecordbook.presentation.shipment_list.ShipmentDetailDialog"
-        android:label="fragment_shipment_detail_dialog"
-        tools:layout="@layout/fragment_shipment_detail_dialog" />
 </navigation>

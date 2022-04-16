@@ -1,6 +1,6 @@
 package com.hyejineee.shipmentrecordbook
 
-import com.hyejineee.shipmentrecordbook.data.ShipmentInfo
+import com.hyejineee.shipmentrecordbook.data.Shipment
 import com.hyejineee.shipmentrecordbook.presentation.shipment_list.ShipmentsViewModel
 import com.hyejineee.shipmentrecordbook.repository.ShipmentRepository
 import kotlinx.coroutines.runBlocking
@@ -15,7 +15,7 @@ class ShipmentsViewModelTest : ViewModelTest() {
     private val shipmentRepositoryMock = Mockito.mock(ShipmentRepository::class.java)
     private val viewModel = ShipmentsViewModel(shipmentRepository = shipmentRepositoryMock)
     private val shipmentList = (0..10).map {
-        ShipmentInfo(
+        Shipment(
             id = it.toLong(),
             code = "MLOW$it",
             receiver = "receiver$it",
@@ -40,7 +40,7 @@ class ShipmentsViewModelTest : ViewModelTest() {
         shipmentListTest.assertValueSequence(
             listOf(
                 emptyList(),
-                shipmentList.map { it.mappingToUiModel() })
+                shipmentList.map { it.toUiModel() })
         )
         progressTest.assertValueSequence(listOf(false, true, false))
         Unit

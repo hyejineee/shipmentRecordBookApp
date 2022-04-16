@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.hyejineee.shipmentrecordbook.presentation.ui_model.SettlementUiModel" />
+
+        <variable
+            name="count"
+            type="String" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/itemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="26dp">
+
+            <TextView
+                android:id="@+id/titleTextview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{data.title}"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="ㄴ알아러미나얼" />
+
+            <TextView
+                android:id="@+id/startDateTextview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{data.startDate + "~"}'
+                android:textSize="14dp"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextview"
+                tools:text="0000.00.00 ~" />
+
+            <TextView
+                android:id="@+id/endDateTextview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text='@{data.endDate}'
+                android:textSize="14dp"
+                app:layout_constraintTop_toBottomOf="@+id/startDateTextview"
+                tools:text="0000.00.00 " />
+
+            <TextView
+                android:id="@+id/totalSalesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="총 판매액 : "
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/endDateTextview" />
+
+            <TextView
+                android:id="@+id/totalSalesTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:text="@{data.price}"
+                app:layout_constraintBottom_toBottomOf="@id/totalSalesLabel"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintLeft_toRightOf="@+id/totalSalesLabel"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/totalSalesLabel"
+                tools:text="00000원" />
+
+            <TextView
+                android:id="@+id/totalCountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="총 판매 건수 : "
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalSalesLabel" />
+
+            <TextView
+                android:id="@+id/totalCountTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:text='@{count +"개"}'
+                app:layout_constraintBottom_toBottomOf="@id/totalCountLabel"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintLeft_toRightOf="@+id/totalCountLabel"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/totalCountLabel"
+                tools:text="00개" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

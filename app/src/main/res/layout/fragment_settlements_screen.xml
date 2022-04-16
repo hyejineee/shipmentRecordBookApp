@@ -5,7 +5,20 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.statement_list.StatementOfShipmentScreen">
+        android:layout_marginBottom="?attr/actionBarSize"
+        tools:context=".presentation.settlement_list.SettlementsScreen">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="26dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/settlementList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
 </layout>

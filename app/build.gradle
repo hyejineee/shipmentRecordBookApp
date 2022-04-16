@@ -22,7 +22,7 @@ android {
         }
     }
 
-    testOptions{
+    testOptions {
         unitTests.returnDefaultValues = true
     }
 
@@ -70,6 +70,7 @@ dependencies {
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
+    //koin
     def koin_version = "3.1.4"
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
@@ -84,6 +85,18 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     kapt 'com.github.bumptech.glide:compiler:4.13.0'
 
+    //live-data ktx
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+
+    //room
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:2.4.2"
+
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.9.0'
 
 
 }

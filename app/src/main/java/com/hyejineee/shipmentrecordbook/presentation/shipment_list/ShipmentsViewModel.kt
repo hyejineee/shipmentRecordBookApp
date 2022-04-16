@@ -1,41 +1,60 @@
 package com.hyejineee.shipmentrecordbook.presentation.shipment_list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hyejineee.shipmentrecordbook.data.ShipmentInfo
-import com.hyejineee.shipmentrecordbook.presentation.ui_model.ShipmentInfoUiModel
+import com.hyejineee.shipmentrecordbook.convertString
+import com.hyejineee.shipmentrecordbook.data.Shipment
+import com.hyejineee.shipmentrecordbook.presentation.ui_model.ShipmentUiModel
 import com.hyejineee.shipmentrecordbook.repository.ShipmentRepository
+import com.hyejineee.shipmentrecordbook.toLiveDate
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class ShipmentsViewModel(
     private val shipmentRepository: ShipmentRepository
-):ViewModel() {
+) : ViewModel() {
 
     private val _isLoading = MutableLiveData(false)
-    val isLoading:LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _shipmentList = MutableLiveData<List<ShipmentInfoUiModel>>(emptyList())
-    val shipmentList:LiveData<List<ShipmentInfoUiModel>> = _shipmentList
+    private val _shipmentList = MutableLiveData<List<ShipmentUiModel>>(emptyList())
+    val shipmentList = _shipmentList.toLiveDate()
 
 
     fun fetchData() = viewModelScope.launch {
         _isLoading.value = true
 
-        val list = shipmentRepository.getAllShipment()
-        _shipmentList.value = list.map { it.mappingToUiModel() }
+        shipmentRepository.getAllShipment()
+            .flowOn(Dispatchers.IO)
+            .collect { item ->
+                _shipmentList.value = item
+                    .sortedByDescending { it.date.time }
+                    .groupBy { it.date }
+                    .map {
+                        listOf(
+                            ShipmentUiModel(
+                                date = it.key.convertString(),
+                                isHeader = true
+                            )
+                        ) + it.value.map { s -> s.toUiModel() }
+                    }
+                    .flatten()
+
+
+            }
 
         _isLoading.value = false
     }
 
-    fun saveShipment(shipment: ShipmentInfo) = viewModelScope.launch{
+    fun saveShipment(shipment: Shipment) = viewModelScope.launch {
         _isLoading.value = true
 
         shipmentRepository.createShipment(shipment)
-
-        val list = shipmentRepository.getAllShipment()
-        _shipmentList.value = list.map { it.mappingToUiModel() }
 
         _isLoading.value = false
     }

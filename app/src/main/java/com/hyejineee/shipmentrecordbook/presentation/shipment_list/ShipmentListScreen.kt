@@ -4,9 +4,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyejineee.shipmentrecordbook.R
 import com.hyejineee.shipmentrecordbook.base.BaseFragment
+import com.hyejineee.shipmentrecordbook.convertString
 import com.hyejineee.shipmentrecordbook.databinding.FragmentShipmentsScreenBinding
 import com.hyejineee.shipmentrecordbook.presentation.MainActivity
 import org.koin.androidx.navigation.koinNavGraphViewModel
+import java.util.*
 
 class ShipmentListScreen : BaseFragment<ShipmentsViewModel, FragmentShipmentsScreenBinding>() {
 
@@ -31,6 +33,8 @@ class ShipmentListScreen : BaseFragment<ShipmentsViewModel, FragmentShipmentsScr
         (this.activity as MainActivity).binding.addButton.setOnClickListener {
             findNavController().navigate(R.id.action_shipmentListScreen_to_addShipmentScreen)
         }
+
+        binding.date = Date(System.currentTimeMillis()).convertString()
     }
 
 }
